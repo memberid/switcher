@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Switcher App</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/kube/6.5.2/css/kube.min.css" type="text/css">
+<link href="https://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet">
+    <link rel="stylesheet" href="/css/main.css" type="text/css" media="screen" title="no title" charset="utf-8">
+  </head>
+  <body style="background: #d35400">
+    <div id="app">
+      <form @submit.prevent="build" v-if="!building" class="form">
+        <div class="form-item">
+          <label>Repo</label>
+          <select v-model="repo">
+            {{#repo}}
+            <option>{{.}}</option>
+            {{/repo}}
+          </select>
+        </div>
+        <div class="form-item">
+          <label>Branch</label>
+          <input type="text" v-model="branch">
+        </div>
+
+        <div class="form-item">
+          <button type="submit" value="Build">Build</button>
+        </div>
+      </form>
+      <div v-if="building">
+        <div class="sk-cube-grid">
+          <div class="sk-cube sk-cube1"></div>
+          <div class="sk-cube sk-cube2"></div>
+          <div class="sk-cube sk-cube3"></div>
+          <div class="sk-cube sk-cube4"></div>
+          <div class="sk-cube sk-cube5"></div>
+          <div class="sk-cube sk-cube6"></div>
+          <div class="sk-cube sk-cube7"></div>
+          <div class="sk-cube sk-cube8"></div>
+          <div class="sk-cube sk-cube9"></div>
+        </div>
+        <h3 style="color:#fff;text-align:center;">Building ${repo}/${branch}</h3>
+      </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/kube/6.5.2/js/kube.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.17.0/axios.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.2/vue.js"></script>
+    <script src="/js/chosen.js"></script>
+    <script src="/js/app.js"></script>
+  </body>
+</html>
