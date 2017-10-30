@@ -54,7 +54,7 @@ router.post('/build', async function(req, res) {
 router.post('/build2', function(req, res) {
 
   ci.startBuild({
-    username: process.env.USERNAME,
+    username: process.env.PROJECT,
     project: req.body.repo,
     branch: req.body.branch
   }).then(function(build){
@@ -64,7 +64,7 @@ router.post('/build2', function(req, res) {
 
 router.get('/build/:id', function(req, res) {
   ci.getBuild({
-    username: process.env.USERNAME,
+    username: process.env.PROJECT,
     project: req.query.repo,
     build_num: req.params.id
   }).then(function(build){
